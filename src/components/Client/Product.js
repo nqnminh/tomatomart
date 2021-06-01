@@ -135,7 +135,6 @@ const Product = (props) => {
           </div>
           <div className="cart">
             <div className="price">{formatNumber(item.price)} ₫</div>
-            
             <CartBtn type={type} product={item} />
           </div>
 
