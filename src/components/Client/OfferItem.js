@@ -10,7 +10,7 @@ const OfferIeam = (props) => {
         message.success('Đã copy mã giảm giá');
     }
     return(
-        <Col span={4}>
+        <Col span={5}>
         <div className="xuIqN" style={{
             'margin-bottom': '30px',
             'padding-left': '15px',

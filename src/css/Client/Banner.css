@@ -15,14 +15,14 @@
 
 .Banner .SearchBar {
   flex-grow: 0;
-  width: 700px;
+  width: 660px;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 21px 36px;
   align-items: center;
   margin: 0 auto;
 }
 
 .Banner .title h1 {
-  font-size: 55px;
+  font-size: 45px;
   font-weight: 700;
   color: rgb(13, 17, 54);
   text-align: center;
