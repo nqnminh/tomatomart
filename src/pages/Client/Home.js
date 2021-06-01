@@ -7,6 +7,7 @@ import Cart from '../../components/Client/Cart';
 import CartItems from '../../components/Client/CartItems';
 import PromotionBlock from '../../components/Client/PromotionBlock';
 import { useDeviceType } from '../../components/Client/helper/useDeviceType';
+import MessengerCustomerChat from 'react-messenger-customer-chat';
 
 class Home extends React.Component {
   constructor(props) {
@@ -31,9 +32,9 @@ class Home extends React.Component {
     document.title = 'Tomato';
     const userAgent = window.navigator.userAgent;
     const deviceType = useDeviceType(userAgent);
-    this.setState({deviceType:deviceType});
+    this.setState({ deviceType: deviceType });
   }
-  formatNumber(value){
+  formatNumber(value) {
     value += '';
     const list = value.split('.');
     const prefix = list[0].charAt(0) === '-' ? '-' : '';
@@ -54,8 +55,12 @@ class Home extends React.Component {
       <div className="Home">
         <TopMenu isTopMenu={true} />
         <Cart formatNumber={this.formatNumber} />
-        <CartItems {...this.props} formatNumber={this.formatNumber}/>
+        <CartItems {...this.props} formatNumber={this.formatNumber} />
         <Banner />
+        <MessengerCustomerChat
+          pageId="651402478367925"
+          appId="1636069416602776"
+        />
         {/* <PromotionBlock /> */}
         <Main deviceType={this.state.deviceType} formatNumber={this.formatNumber} />
       </div>
