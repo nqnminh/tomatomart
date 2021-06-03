@@ -6,6 +6,7 @@ import BackToHomeBtn from '../../components/Client/BackToHomeBtn';
 import LoadingPage from '../../components/LoadingPage';
 import queryString from 'query-string';
 import { CartContext } from '../../contexts/CartContext';
+import MessengerCustomerChat from 'react-messenger-customer-chat';
 
 
 
@@ -64,6 +65,10 @@ const OrderReceived = (props) => {
         loading ?
           <LoadingPage /> :
           <div className="user-wrapper">
+            <MessengerCustomerChat
+              pageId="651402478367925"
+              appId="1636069416602776"
+            />
             <BackToHomeBtn />
             <div className="received mb-5">
               <h3 className="bt-header">Đơn hàng đã nhận</h3>

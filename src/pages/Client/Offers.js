@@ -4,6 +4,7 @@ import TopMenu from '../../components/Client/TopMenu';
 import Cart from '../../components/Client/Cart';
 import CartItems from '../../components/Client/CartItems';
 import OfferList from '../../components/Client/OfferList';
+import MessengerCustomerChat from 'react-messenger-customer-chat';
 
 class Offers extends React.Component {
 
@@ -14,6 +15,10 @@ class Offers extends React.Component {
         <Cart />
         <CartItems {...this.props} />
         <OfferList/>
+        <MessengerCustomerChat
+          pageId="651402478367925"
+          appId="1636069416602776"
+        />
       </div>
     );
   }

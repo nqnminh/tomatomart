@@ -14,7 +14,8 @@ import {
   useElements
 } from '@stripe/react-stripe-js';
 import axios from 'axios';
-import { MomoIcon } from '../../components/Client/Icon/index'
+import { MomoIcon } from '../../components/Client/Icon/index';
+import MessengerCustomerChat from 'react-messenger-customer-chat';
 
 import '../../css/Client/Checkout.css';
 import { CartContext } from '../../contexts/CartContext';
@@ -110,7 +111,7 @@ export default function (props) {
         }
       })
       if (data) {
-        const errorCode=0;
+        const errorCode = 0;
         createOrder(data.order);
         localStorage.removeItem('cartItems');
         setStateDefault();
@@ -128,7 +129,7 @@ export default function (props) {
           totalPrice: price ? price : totalPrice
         }
       }).then(res => {
-        const data= res.data;
+        const data = res.data;
         window.location.replace(data.payUrl);
       })
         .catch(err => {
@@ -195,10 +196,14 @@ export default function (props) {
         loading ?
           <LoadingPage /> :
           <div className="checkout-form">
+            <MessengerCustomerChat
+              pageId="651402478367925"
+              appId="1636069416602776"
+            />
             <div className="order-info">
               <h3 className="bt-header">Đơn hàng của bạn</h3>
               <div className="item">
-                <div className="title">{`Tổng tạm tính(${cartItems.length}` + 'sp'}</div>
+                <div className="title">{`Tổng tạm tính( ${cartItems.length}` + ' sp)'}</div>
                 <div className="price">{`${price ? formatNumber(price) : formatNumber(totalPrice)}đ`}</div>
               </div>
               <div className="item">
