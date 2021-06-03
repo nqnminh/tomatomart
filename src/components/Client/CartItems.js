@@ -77,7 +77,7 @@ export default function(props) {
                 <div className="info">
                   <div className="title">{item.title}</div>
                   <div className="price">{formatNumber(item.price)}đ</div>
-                  <div className="quantity">{item.quantity} pc(s)</div>
+                  <div className="quantity">{item.quantity} sp</div>
                 </div>
                 <div className="total-price">{formatNumber(item.quantity * item.price)}đ</div>
                 <FontAwesomeIcon icon={faTimes} className="ml-4" onClick={() => removeItem(item)} />

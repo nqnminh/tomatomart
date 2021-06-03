@@ -25,6 +25,7 @@ const Category = (props) => {
   const category = [
     'Thịt tươi sống',
     'Cá tươi và Hải sản',
+    'Rau xanh',
     'Hoa quả',
     'Rau xanh',
     'Nguyên liệu',

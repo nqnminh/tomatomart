@@ -26,10 +26,12 @@ const TaskBar = (props) => {
   const categoryList = [
     { name: 'Thịt tươi sống' },
     { name: 'Cá tươi và Hải sản' },
+    {name: 'Rau xanh'},
     { name: 'Hoa quả' },
     { name: 'Thực phẩm đóng hộp' },
     { name: 'Nguyên liệu nấu nướng' },
-    { name: 'Món ngon hôm nay' },
+    { name: 'Món ngon hôm nay' }
+    
   ];
 
 

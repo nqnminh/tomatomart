@@ -82,6 +82,7 @@ const Product = (props) => {
 
         >
           <img src={item.image} alt="" />
+          {item.discountInPercent === 0 ? '' : <span class="discountpresent">{item.discountInPercent}%</span>}
           <div className={"info"}>
             <h3 className="title">{item.title}</h3>
             <p className="author">{item.unit} kg</p>

@@ -18,11 +18,11 @@ import { AdminContext } from '../../contexts/AdminContext';
 
 function validateFn(input = '', info = '') {
   if (!input) {
-    return `The ${info} field is required.`
+    return `Bắt buộc phải nhập ${info}`
   }
-  if (info !== 'price' && info !== 'value') {
-    if (input.length < 6) {
-      return `${info.charAt(0).toUpperCase() + info.slice(1)} must be at least 5 characters.`
+  if (info !== 'price' && info !== 'value' && info !== 'discountInPercent') {
+    if (input.length < 1) {
+      return `${info.charAt(0).toUpperCase() + info.slice(1)} Nhiều hơn 1 kí tự`
     }
   }
   return '';
@@ -35,8 +35,9 @@ const ProductFunc = () => {
     name: '',
     description: '',
     price: '',
-    author: '',
-    slug: ''
+    unit: '',
+    slug: '',
+    discountInPercent: ''
   });
   const divElement = useRef(null);
 
@@ -68,10 +69,12 @@ const ProductFunc = () => {
   const categoryList = [
     { name: 'Thịt tươi sống' },
     { name: 'Cá tươi và Hải sản' },
+    {name: 'Rau xanh'},
     { name: 'Hoa quả' },
     { name: 'Thực phẩm đóng hộp' },
     { name: 'Nguyên liệu nấu nướng' },
     { name: 'Món ngon hôm nay' },
+    
   ];
 
   const validate = (isPromotion) => {
@@ -95,16 +98,18 @@ const ProductFunc = () => {
       const nameError = validateFn(data.title, 'name') || '';
       const descriptionError = validateFn(data.description, 'description') || '';
       const priceError = validateFn(data.price, 'price') || '';
-      const authorError = validateFn(data.author, 'author') || '';
+      const unitError = validateFn(data.unit, 'unit') || '';
       const slugError = validateFn(data.slug, 'slug') || '';
-  
-      if (nameError || descriptionError || priceError || authorError || slugError) {
+      const discountInPercentError = validateFn(data.discountInPercent, 'discountInPercent') || '';
+      
+      if (nameError || descriptionError || priceError || unitError || slugError || discountInPercentError) {
         setError({
           name: nameError,
           description: descriptionError,
           price: priceError,
-          author: authorError,
-          slug: slugError
+          unit: unitError,
+          slug: slugError,
+          discountInPercent: discountInPercentError
         })
         return false;
       }
@@ -170,8 +175,9 @@ const ProductFunc = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const token = localStorage.getItem('adminToken');
-    const isValid = validate(true);
+    
     if (option === 'promotions-add' || option === 'promotions-update') {
+      const isValid = validate(true);
       if ( option !== 'promotions-add') {
         if (JSON.stringify(data) === JSON.stringify(promotion)) {
           return;
@@ -209,12 +215,14 @@ const ProductFunc = () => {
         }
       }
     } else {
+      const isValid = validate(false);
       if ( option !== 'add') {
         if (JSON.stringify(data) === JSON.stringify(product)) {
           return;
         }
         
         if (isValid) {
+          console.log('ok',data);
           axios.patch('https://tomato-mart.herokuapp.com/admin/update', data, { headers: {"Authorization" : `Bearer ${token}`}})
                .then(res => {
                   setOpen(false);
@@ -222,7 +230,7 @@ const ProductFunc = () => {
                })
         }
       } else {
-        if (isValid) {
+        if (isValid) {  
           axios.post('https://tomato-mart.herokuapp.com/admin/add-product', data, { headers: {"Authorization" : `Bearer ${token}`}})
                .then(res => {
                  setOpen(false);
@@ -365,7 +373,7 @@ const ProductFunc = () => {
                     Giảm %
                     <span className="ml-1 text-danger">*</span>
                   </Label>
-                  <Input autoComplete="off" onChange={handleInput} value={data.value || ''} className="product-form-control" id="author" type="number" name="value"/>
+                  <Input autoComplete="off" onChange={handleInput} value={data.value || ''} className="product-form-control" id="unit" type="number" name="value"/>
                   {errors.value && <div className="validation">{errors.value}</div>}
                 </FormGroup>
               </Col>
@@ -481,12 +489,21 @@ const ProductFunc = () => {
                 </FormGroup>
 
                 <FormGroup className="update-form">
-                  <Label className="product-label" for="author">
+                  <Label className="product-label" for="unit">
                     Khối lượng
                     <span className="ml-1 text-danger">*</span>
                   </Label>
-                  <Input autoComplete="off" onChange={handleInput} value={data.author || ''} className="product-form-control" id="author" type="text" name="author"/>
-                  {errors.author && <div className="validation">{errors.author}</div>}
+                  <Input autoComplete="off" onChange={handleInput} value={data.unit || ''} className="product-form-control" id="unit" type="text" name="unit"/>
+                  {errors.unit && <div className="validation">{errors.unit}</div>}
+                </FormGroup>
+
+                <FormGroup className="update-form">
+                  <Label className="product-label" for="discountInPercent">
+                    Giảm giá
+                    <span className="ml-1 text-danger">*</span>
+                  </Label>
+                  <Input autoComplete="off" onChange={handleInput} value={data.discountInPercent || ''} className="product-form-control" id="discountInPercent" type="text" name="discountInPercent"/>
+                  {errors.discountInPercent && <div className="validation">{errors.discountInPercent}</div>}
                 </FormGroup>
 
                 <FormGroup className="update-form">
@@ -501,7 +518,7 @@ const ProductFunc = () => {
 
                 <FormGroup className="update-form">
                   <Label className="product-label" for="slug">
-                    Slug auto
+                    Slug tự động
                     <span className="ml-1 text-danger">*</span>
                   </Label>
                   <Input autoComplete="off" onChange={handleInput} value={(data.title && toSlug(data.title)) || ''} className="product-form-control" id="slug" type="text" name="slug"/>
