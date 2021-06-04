@@ -27,7 +27,7 @@ const Category = (props) => {
     'Cá tươi và Hải sản',
     'Rau xanh',
     'Hoa quả',
-    'Rau xanh',
+    'Thực phẩm đóng hộp',
     'Nguyên liệu',
     'Món ngon hôm nay',
   ]
@@ -40,12 +40,13 @@ const Category = (props) => {
   const iconCategory = (category) =>{
       switch(category){
         case 'Hoa quả': return (<FruitsIcon/>) ;
-        case 'Nguyên liệu': return (<DairyIcon/>);
+        case 'Nguyên liệu nấu nướng': return (<DairyIcon/>);
         case 'Món ngon hôm nay': return(<CookingIcon/>);
         case 'Rau xanh': return(<CareIcon/>);
         case 'Cá tươi và Hải sản': return(<FishfishIcon/>);
         case 'Thịt tươi sống': return(<FistIcon/>);
-        default: return (<FistIcon/>)
+        case 'Thực phẩm đóng hộp': return(<CaffeIcon/>)
+        default: return (<BreakfastIcon/>)
       }
   }
   

@@ -8,8 +8,8 @@ import { AdminContext } from '../../contexts/AdminContext';
 const Target = () => {
   const { orders } = useContext(AdminContext);
   const [ series, setSerires] = useState([0, 0]);
-  const wTarget = 10000;
-  const mTarget = 40000;
+  const wTarget = 15000000;
+  const mTarget = 60000000;
 
   useEffect(() => {
     let firstDay = new Date('2020/5/18');
