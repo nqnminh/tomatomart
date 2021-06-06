@@ -57,7 +57,7 @@
 .Checkout form .billing-address label, .Checkout form .discount label {
   font-size: 16px;
   margin: 0;
-  width: 15%;
+  width: 45%;
   min-width: 70px;
   padding: 11px 0;
   overflow: hidden;

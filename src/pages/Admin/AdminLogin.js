@@ -21,7 +21,7 @@ const AdminLogin = (props) => {
   }
 
   useEffect(() => {
-    document.title = 'PickBazar';
+    document.title = 'Tomato Mart';
     if (adminToken) {
       props.history.push("/admin");
     } else {

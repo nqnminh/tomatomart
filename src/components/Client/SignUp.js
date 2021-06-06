@@ -42,21 +42,7 @@ const SignUp = (props) => {
     phone: '',
   });
   const { cities, districts, handleCityClick } = useContext(AreaContext); 
-  
-  // useEffect(() => {
-  //   axios.get('https://dvbt-areas.herokuapp.com/cities')
-  //        .then(res => {
-  //          setCity(res.data);
-  //        })
-  // })
 
-  // const handleCity = (event) => {
-  //   event.preventDefault();
-  //   axios.get(`https://dvbt-areas.herokuapp.com/districts?city=${event.target.value}`)
-  //        .then(res => {
-  //          setDistrict(res.data);
-  //        })
-  // }
 
   const validate = () => {
     const nameError = validateFn(user.name, 'name') || '';
@@ -151,27 +137,28 @@ const SignUp = (props) => {
         </FormGroup>
         <FormGroup>
           <Label for="city">
-            City
+            Huyện/Thành Phố
             <span className="ml-1 text-danger">*</span>
           </Label>
           <Input autoComplete="off" type="select" name="city" id="city" onChange={(event) => {handleCityClick(event); handleInput(event)}}>
-            <option>Tỉnh/Thành phố</option>
-            { cities.map(city => <option key={city.code}>{city.name}</option>)}
+            <option>Thành phố</option>
+            {/* { cities.map(city => <option key={city.ID}>{city.Title}</option>)} */}
+             <option key={cities.ID}>{cities.Title}</option>
           </Input>
         </FormGroup>
         <FormGroup>
           <Label for="district">
-            District
+            Xã/Phường
             <span className="ml-1 text-danger">*</span>
           </Label>
           <Input autoComplete="off" type="select" name="district" id="district" onChange={handleInput}>
-            <option>Quận/Huyện</option>
-            { districts.map(district => <option key={district.code}>{district.name}</option>)}
+            <option>Phường/Xã</option>
+            { districts.map(district => <option key={district.ID}>{district.Title}</option>)}
           </Input>
         </FormGroup>
         <FormGroup>
           <Label for="phone">
-            PHONE
+            Số điện thoại
             <span className="ml-1 text-danger">*</span>
           </Label>
           <Input autoComplete="off" id="phone" type="text" name="phone" onChange={handleInput} />

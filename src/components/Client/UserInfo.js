@@ -27,7 +27,7 @@ const UserInfo = (props) => {
     const CancelToken = axios.CancelToken;
     const source = CancelToken.source();
         
-    axios.get(`https://dvbt-areas.herokuapp.com/districts?city=${data.city}`, { cancelToken: source.token })
+    axios.get(`https://tomato-mart.herokuapp.com/area/district`, { cancelToken: source.token })
          .then(res => {
            setDistricts(res.data)
          })
@@ -47,7 +47,7 @@ const UserInfo = (props) => {
         <FontAwesomeIcon icon={faPen} size="xs" />
         <Modal isOpen={modal} toggle={toggle} centered external={externalCloseBtn} autoFocus={false}>
           <div className="edit-modal">
-            <h3 className="bt-header">{'Edit ' + (isPhone ? 'Contact' : 'Address')}</h3>
+            <h3 className="bt-header">{'Sửa ' + (isPhone ? 'Liên hệ' : 'Địa chỉ')}</h3>
             <Form className="AuthForm p-0" onSubmit={handleSubmit}>
               <FormGroup>
               {
@@ -86,7 +86,8 @@ const UserInfo = (props) => {
                     autoComplete="off"
                   >
                     <option>Tỉnh/Thành phố</option>
-                    { cities.map(city => <option key={city.name}>{city.name}</option>)}
+                    {/* { cities.map(city => <option key={city.name}>{city.name}</option>)} */}
+                    <option key={cities.ID}>{cities.Title}</option>
                   </Input>
                 </FormGroup>
               }
@@ -106,11 +107,11 @@ const UserInfo = (props) => {
                     autoComplete="off"
                   >
                     <option>Quận/Huyện</option>
-                    { districts.map(district => <option key={district.name}>{district.name}</option>)}
+                    { districts.map(district => <option key={district.ID}>{district.Title}</option>)}
                   </Input>
                 </FormGroup>
               }
-              <Button block size="lg" type="submit">{'Save ' + (isPhone ? 'Contact' : 'Address')}</Button>
+              <Button block size="lg" type="submit">{'Lưu ' + (isPhone ? 'Liên hệ' : 'Địa chỉ')}</Button>
             </Form>
           </div>
         </Modal>

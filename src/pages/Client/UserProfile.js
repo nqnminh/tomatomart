@@ -22,7 +22,7 @@ const UserProfile = () => {
   const [isSave, setSave] = useState(false);
 
   useEffect(() => {
-    document.title = 'Profile - PickBazar';
+    document.title = 'Thông tin - Tomato Mart';
     setData(user);
   }, [user])
 

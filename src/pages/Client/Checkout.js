@@ -75,7 +75,7 @@ export default function (props) {
 
     const tempCity = order.city ? order.city : user.city;
 
-    axios.get(`https://dvbt-areas.herokuapp.com/districts?city=${tempCity}`, { cancelToken: source.token })
+    axios.get(`https://tomato-mart.herokuapp.com/area/district`, { cancelToken: source.token })
       .then(res => {
         setDistricts(res.data);
       })
@@ -263,7 +263,7 @@ export default function (props) {
                   />
                 </FormGroup>
                 <FormGroup>
-                  <Label for="city">City</Label>
+                  <Label for="city">Thành phố/Huyện</Label>
                   <Input
                     type="select"
                     name="city"
@@ -275,12 +275,13 @@ export default function (props) {
                     value={order.city || user.city}
                     autoComplete="off"
                   >
-                    <option>Tỉnh/Thành phố</option>
-                    {cities.map(city => <option key={city.name} >{city.name}</option>)}
+                    <option>Huyện/Thị xã</option>
+                    {/* {cities.map(city => <option key={city.name} >{city.name}</option>)} */}
+                    <option key={cities.ID}>{cities.Title}</option>
                   </Input>
                 </FormGroup>
                 <FormGroup>
-                  <Label for="district">Huyện</Label>
+                  <Label for="district">Phường/Xã</Label>
                   <Input
                     type="select"
                     name="district"
@@ -289,8 +290,8 @@ export default function (props) {
                     value={order.district || user.district}
                     autoComplete="off"
                   >
-                    <option>Quận/Huyện</option>
-                    {districts.map(district => <option key={district.name}>{district.name}</option>)}
+                    <option>Phường/Xã</option>
+                    {districts.map(district => <option key={district.ID}>{district.Title}</option>)}
                   </Input>
                 </FormGroup>
                 <FormGroup>

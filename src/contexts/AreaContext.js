@@ -10,14 +10,14 @@ export class AreaProvider extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      cities: [],
+      cities: {},
       districts: []
     }
     this.handleCityClick = this.handleCityClick.bind(this);
   }
 
   componentDidMount() {
-    axios.get('https://dvbt-areas.herokuapp.com/cities', { cancelToken: source.token })
+    axios.get('https://tomato-mart.herokuapp.com/area/city', { cancelToken: source.token })
       .then(res => {
         this.setState({
           cities: res.data
@@ -33,7 +33,7 @@ export class AreaProvider extends React.Component {
 
   handleCityClick(event) {
     event.preventDefault();
-    axios.get(`https://dvbt-areas.herokuapp.com/districts?city=${event.target.value}`)
+    axios.get(`https://tomato-mart.herokuapp.com/area/district`)
       .then(res => {
         this.setState({
           districts: res.data

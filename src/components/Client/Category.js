@@ -28,7 +28,7 @@ const Category = (props) => {
     'Rau xanh',
     'Hoa quả',
     'Thực phẩm đóng hộp',
-    'Nguyên liệu',
+    'Nguyên liệu nấu nướng',
     'Món ngon hôm nay',
   ]
 

@@ -24,7 +24,7 @@ function ProductView(props) {
       top: 0,
       behavior: "smooth"
     })
-    document.title = product.title ? `${product.title} - PickBazar` : 'PickBazar';
+    document.title = product.title ? `${product.title} - Tomato Mart` : 'TomatoMart';
     setProduct(props.match.params.title);
     return () => {
       setLoading(true);
