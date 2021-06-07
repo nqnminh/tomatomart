@@ -31,6 +31,7 @@ function validateFn(input = '', info = '') {
 const ProductFunc = () => {
   const { open, setOpen, product, setProducts, option, setPromotions, promotion } = useContext(AdminContext);
   const [ data, setData ] = useState({});
+  const [discount, setDiscount]=useState();
   const [errors, setError] = useState({
     name: '',
     description: '',
@@ -52,6 +53,7 @@ const ProductFunc = () => {
     } else {
       if (option !== 'add') {
         setData(product);
+        setDiscount(product.discountInPercent);
       } else {
         setData({category: 'Thịt tươi sống'});
       }
@@ -100,16 +102,16 @@ const ProductFunc = () => {
       const priceError = validateFn(data.price, 'price') || '';
       const unitError = validateFn(data.unit, 'unit') || '';
       const slugError = validateFn(data.slug, 'slug') || '';
-      const discountInPercentError = validateFn(data.discountInPercent, 'discountInPercent') || '';
+      // const discountInPercentError = validateFn(data.discountInPercent, 'discountInPercent') || '';
       
-      if (nameError || descriptionError || priceError || unitError || slugError || discountInPercentError) {
+      if (nameError || descriptionError || priceError || unitError || slugError) {
         setError({
           name: nameError,
           description: descriptionError,
           price: priceError,
           unit: unitError,
           slug: slugError,
-          discountInPercent: discountInPercentError
+          // discountInPercent: discountInPercentError
         })
         return false;
       }
@@ -166,9 +168,9 @@ const ProductFunc = () => {
 
   const handleInput = (event) => {
     if (event.target.name === 'title') {
-      setData({...data, [event.target.name]: event.target.value, slug: toSlug(event.target.value)});
+      setData({...data, [event.target.name]: event.target.value, slug: toSlug(event.target.value), salePrice : discount});
     } else {
-      setData({...data, [event.target.name]: event.target.value});
+      setData({...data, [event.target.name]: event.target.value, salePrice : discount});
     }
   }
 
@@ -222,7 +224,6 @@ const ProductFunc = () => {
         }
         
         if (isValid) {
-          console.log('ok',data);
           axios.patch('https://tomato-mart.herokuapp.com/admin/update', data, { headers: {"Authorization" : `Bearer ${token}`}})
                .then(res => {
                   setOpen(false);
@@ -333,7 +334,7 @@ const ProductFunc = () => {
               <Col className="product-background">
                 <FormGroup className="update-form">
                   <Label className="product-label" for="name">
-                    Name
+                    Tên 
                     <span className="ml-1 text-danger">*</span>
                   </Label>
                   <Input autoComplete="off" onChange={handleInput} value={data.title || ''} className="product-form-control" id="name" type="text" name="title"/>
@@ -502,7 +503,7 @@ const ProductFunc = () => {
                     Giảm giá
                     <span className="ml-1 text-danger">*</span>
                   </Label>
-                  <Input autoComplete="off" onChange={handleInput} value={data.discountInPercent || ''} className="product-form-control" id="discountInPercent" type="text" name="discountInPercent"/>
+                  <Input autoComplete="off" onChange={handleInput} value={data.discountInPercent} className="product-form-control" id="discountInPercent" type="number" name="discountInPercent"/>
                   {errors.discountInPercent && <div className="validation">{errors.discountInPercent}</div>}
                 </FormGroup>
 
