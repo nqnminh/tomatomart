@@ -48,7 +48,7 @@ const AdminLogin = (props) => {
     <div className="AdminLogin">
       <div className="AuthForm">
         <div className="header">
-          <img src="https://res.wwdinary.com/dofqucuyy/image/upload/v1585755124/Books/logo_gtuxyy.svg" alt="" />
+          <img src="https://res.cloudinary.com/drjnoedg8/image/upload/v1623123193/free-logo-cic6hlo6y4-28s7ipjfin-removebg-preview_ad6dbn.png" alt="" />
           <p>Đăng nhập Admin</p>
         </div>
         {err && <div style={{

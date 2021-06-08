@@ -90,7 +90,7 @@ const TopMenu = (props) => {
               }
               <div className="logo">
                 <Link to="/" onClick={() => setStateDefault()}>
-                  <img alt="" src="https://res.cloudinary.com/dofqucuyy/image/upload/v1585755124/Books/logo_gtuxyy.svg" />
+                  <img alt="" src="https://res.cloudinary.com/drjnoedg8/image/upload/v1623123193/free-logo-cic6hlo6y4-28s7ipjfin-removebg-preview_ad6dbn.png" />
                 </Link>
               </div>
               {!isVisble && <SearchBar isTopMenu={true} />}

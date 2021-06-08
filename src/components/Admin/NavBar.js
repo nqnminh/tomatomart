@@ -68,7 +68,7 @@ const NavBar = (props) => {
         <Burger handleBurgerClick={handleBurgerClick} isClick={isClick} isNav={true} />
         <div className="logo">
           <Link to="/admin">
-            <img src="https://res.cloudinary.com/dofqucuyy/image/upload/v1585755124/Books/logo_gtuxyy.svg" alt="" />
+            <img src="https://res.cloudinary.com/drjnoedg8/image/upload/v1623123193/free-logo-cic6hlo6y4-28s7ipjfin-removebg-preview_ad6dbn.png" alt="" />
           </Link>
         </div>
         <div className="add-products-btn" style={{marginLeft: "auto", marginRight: "20px"}} onClick={() => setOpen(true, "add")}>
