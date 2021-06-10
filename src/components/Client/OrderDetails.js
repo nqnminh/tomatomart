@@ -45,7 +45,7 @@ const OrderDetails =  (props) => {
               <div className="title">Địa chỉ nhận</div>
               <span>{order && `${order.address}, ${order.district}, ${order.city}` }</span>
               <div className="title mt-4">Phương thức thanh toán</div>
-              <span>{order.payment === 'cash' ? 'Cash On Delivery' : 'Online Payment'}</span>
+              <span>{order.payment === 'cash' ? 'Thanh toán khi nhận hàng' : 'Thanh toán online'}</span>
             </div>
             <div className="info">
               <div>
