@@ -156,7 +156,7 @@ const SignIn = (props) => {
             id="password"
             type="password"
             name="password"
-            placeholder="12345"
+            placeholder="123"
             onChange={handleInput}
             autoComplete="off"
           />
