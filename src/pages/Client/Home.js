@@ -60,6 +60,8 @@ class Home extends React.Component {
         <MessengerCustomerChat
           pageId="651402478367925"
           appId="1636069416602776"
+          language="vi"
+          themeColor="#009e7f"
         />
         {/* <PromotionBlock /> */}
         <Main deviceType={this.state.deviceType} formatNumber={this.formatNumber} />
