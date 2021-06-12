@@ -199,6 +199,8 @@ export default function (props) {
             <MessengerCustomerChat
               pageId="651402478367925"
               appId="1636069416602776"
+              language="vi_VN"
+              themeColor="#009e7f"
             />
             <div className="order-info">
               <h3 className="bt-header">Đơn hàng của bạn</h3>

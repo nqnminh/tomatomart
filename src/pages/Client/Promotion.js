@@ -14,8 +14,8 @@ const Promotion = (props) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`https://tomato-mart.herokuapp.com/promotion/get-promotion?id=${props.match.params.id}`)  
-        setData(res.data);    
+        const res = await axios.get(`https://tomato-mart.herokuapp.com/promotion/get-promotion?id=${props.match.params.id}`)
+        setData(res.data);
       } catch (error) {
         console.log(error);
       }
@@ -23,19 +23,19 @@ const Promotion = (props) => {
     fetchData();
   }, [props.match.params.id])
 
-  return(
-    <div 
-      className="Promotion py-5" 
+  return (
+    <div
+      className="Promotion py-5"
       style={{
-        backgroundColor:"rgb(247, 247, 247)",
-        marginTop:"85px"
+        backgroundColor: "rgb(247, 247, 247)",
+        marginTop: "85px"
       }}>
-        <TopMenu />
-        <Cart />
-        <CartItems {...props} />
-        <PromotionView 
-          {...data}
-        />
+      <TopMenu />
+      <Cart />
+      <CartItems {...props} />
+      <PromotionView
+        {...data}
+      />
     </div>
   );
 }

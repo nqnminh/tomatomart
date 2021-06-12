@@ -9,15 +9,17 @@ import MessengerCustomerChat from 'react-messenger-customer-chat';
 class Offers extends React.Component {
 
   render() {
-    return(
+    return (
       <div className="Home">
         <TopMenu isTopMenu={true} />
         <Cart />
         <CartItems {...this.props} />
-        <OfferList/>
+        <OfferList />
         <MessengerCustomerChat
           pageId="651402478367925"
           appId="1636069416602776"
+          language="vi_VN"
+          themeColor="#009e7f"
         />
       </div>
     );

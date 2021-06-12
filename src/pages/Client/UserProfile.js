@@ -66,6 +66,8 @@ const UserProfile = () => {
             <MessengerCustomerChat
               pageId="651402478367925"
               appId="1636069416602776"
+              language="vi_VN"
+              themeColor="#009e7f"
             />
             <div className="profile mb-5">
               <h3 className="bt-header">Your Profile</h3>

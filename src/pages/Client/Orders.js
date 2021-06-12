@@ -54,6 +54,8 @@ const Orders = () => {
             <MessengerCustomerChat
               pageId="651402478367925"
               appId="1636069416602776"
+              language="vi_VN"
+              themeColor="#009e7f"
             />
             <div className="my-order mx-4">
               <h3 className="bt-header">Đơn hàng của tôi</h3>

@@ -60,7 +60,7 @@ class Home extends React.Component {
         <MessengerCustomerChat
           pageId="651402478367925"
           appId="1636069416602776"
-          language="vi"
+          language="vi_VN"
           themeColor="#009e7f"
         />
         {/* <PromotionBlock /> */}
